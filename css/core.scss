@@ -383,6 +383,41 @@ a{
   h4 {font-size: 0.9em;}
   h5 {font-size: 0.8em;}
   h6 {font-size: 0.7em;}
+  table{
+    margin: 35px 0;
+    font-size: 12px;
+    th{
+      background-color: #a5e0ef;
+      @include filter-gradient(#a5e0ef, #72b6c8, vertical);
+      @include background-image(linear-gradient(top,  #a5e0ef 0%,#a1dae8 10%,#9bd6e3 14%,#88c1d0 46%,#7ebccd 71%,#79bbcb 76%,#72b6c8 100%));
+      padding: 10px 15px;
+      text-align: center;
+      color: #fff;
+      border-left: 1px dotted #fff;
+      &:first-child {
+        @include border-radius(7px 0 0 0);
+        border-left: none;
+      }
+      &:last-child {@include border-radius(0 7px 0 0);}
+    }
+    td{
+      background-color: #f8f8f8;
+      border:1px dotted #e0e0e0;
+      text-align: center;
+      font-weight: bold;
+      padding: 5px 20px;
+      text-align: center;
+      &:first-child{
+        text-align: left;
+        border-left: 1px solid #b5c7ce;
+      }
+      &:last-child{border-right: 1px solid #b5c7ce;}
+    }
+    tr:last-child td{
+      padding-bottom: 10px;
+      border-bottom: 1px solid #b5c7ce;
+    }
+  }
 }
 
 
@@ -417,11 +452,25 @@ body {
 }
 .b-footer{
   position: relative;
-  //@extend .pageWidth;
+  background-color: #ffffff;
+  @include filter-gradient(#ffffff, #e1eef7, vertical);
+  @include background-image(linear-gradient(top,  #fdfdff 0%,#e1eef7 100%));
+  @extend .ie9-gradient-support;
 }
+.b-footer__info{
+  width: 300px;
+  text-align: center;
+}
+.b-counters{
+  @extend .hLine;
+  .unit{margin-left: 15px;}
+}
+
+
 .b-main{
   position: relative;
   @extend .pageWidth;
+  margin-bottom: 40px;
 }
 
 /*OTHER*/
@@ -461,6 +510,11 @@ body {
   top:25px;
   right: 0;
 }
+.b-phone--footer{
+  @extend .b-phone;
+  margin-bottom: 15px;
+}
+
 .b-email{
   font-size: 13px;
   .email__label{
@@ -567,16 +621,28 @@ body {
   .index__bnr{
     float: right;
     position: relative;
+    margin-left: 15px;
   }
   .index__bnr__action{
     display: block;
     position: absolute;
-    border-bottom: 20px;
+    bottom: 20px;
     left: 50%;
-    margin-left: -73px;
-    width: 145px;
+    margin-left: -68px;
+    width: 136px;
     text-align: center;
-
+    padding: 12px 0 10px;
+    @include box-shadow(0 1px 1px rgba(0,0,0,.4));
+    @include border-radius(7px);
+    @include singleLink(#5f93a0);
+    text-decoration: none;
+    font:14px $titleFamily;
+    text-transform: uppercase;
+    @include text-shadow(0 1px 0 #fff);
+    background-color: #ffffff;
+    @include filter-gradient(#ffffff, #f3f3f3, vertical);
+    @include background-image(linear-gradient(top,  #ffffff 0%,#ffffff 43%,#fafafa 52%,#fbfbfb 55%,#f4f4f4 74%,#f3f3f3 100%));
+    @extend .ie9-gradient-support;
   }
 }
 /*SOME page------------------------*/
@@ -584,7 +650,12 @@ body {
 /*PLUGINS styles -------------------*/
 
 //FF special
-@-moz-document url-prefix() {}
+@-moz-document url-prefix() {
+  .b-nav .unit{
+    @include inline-block;
+    width:196px;
+  }
+}
 
 //debug grid
 //* { outline: 2px dotted red; }
